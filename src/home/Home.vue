@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>
+  <main class="container mx-auto">
     <h1 class="font-bold text-widest">Home</h1>
   </main>
 </template>
