@@ -18,6 +18,12 @@ const router = createRouter({
           path: 'team',
           name: 'team',
           component: () => import('@/pokemon/Team.vue')
+        },
+        {
+          path: 'team/:name',
+          props: true,
+          name: 'pokemon-detail',
+          component: () => import('@/pokemon/Detail.vue')
         }
       ]
     }

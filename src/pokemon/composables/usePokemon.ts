@@ -18,8 +18,14 @@ export const usePokemon = () => {
     return pokemonCache[name]
   }
 
+  const getEvolutionChain = async (id: number) => {
+    const evolutionChain = await api.get(`/evolution-chain/${id}`)
+    return evolutionChain.data
+  }
+
   return {
     index,
-    show
+    show,
+    getEvolutionChain
   }
 }

@@ -27,6 +27,7 @@ const removePokemon = (name: string) => {
 
 <template>
   <div v-if="!loading" class="container mx-auto my-5">
+    <h3 v-if="pokemonsTeam.length < 1">No tienes pokemos en tu equipo aun</h3>
     <div class="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 gap-10">
       <PokemonCard
         v-for="(pokemon, index) in pokemonsTeam"

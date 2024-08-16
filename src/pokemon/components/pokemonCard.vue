@@ -77,6 +77,10 @@ const removePokemon = (pokemon: Pokemon) => {
         <h3 class="text-sm mb-1 font-semibold">Cries:</h3>
         <AudioPlayer :url="pokemon.cries.latest" label="Play" />
       </div>
+
+      <RouterLink :to="{ name: 'pokemon-detail', params: { name: pokemon.name } }">
+        Mas detalles
+      </RouterLink>
     </div>
   </div>
 </template>
