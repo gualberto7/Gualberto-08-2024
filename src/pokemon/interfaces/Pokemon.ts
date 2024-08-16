@@ -3,6 +3,7 @@ export interface Pokemon {
   url: string
   types?: PokemonType[]
   stats?: PokemonStat[]
+  cries?: PokemonCry
 }
 
 interface PokemonType {
@@ -20,4 +21,9 @@ interface PokemonStat {
     name: string
     url: string
   }
+}
+
+interface PokemonCry {
+  latest: string
+  legacy: string
 }
