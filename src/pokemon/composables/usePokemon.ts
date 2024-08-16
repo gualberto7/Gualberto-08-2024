@@ -3,7 +3,7 @@ import { onMounted } from 'vue'
 import { usePokemonStore } from '@/stores/pokemon'
 
 export const usePokemon = () => {
-  const pokemonStore = usePokemonStore()
+  const { setPokemons, addPokemonToCache, pokemonsTeam, pokemonCache } = usePokemonStore()
 
   onMounted(async () => {
     await index()
@@ -11,6 +11,19 @@ export const usePokemon = () => {
 
   const index = async () => {
     const pokemons = await api.get('pokemon?limit=10')
-    pokemonStore.setPokemons(pokemons.data.results)
+    setPokemons(pokemons.data.results)
+  }
+
+  const show = async (name: string) => {
+    if (!pokemonCache[name]) {
+      const pokemon = await api.get(`pokemon/${name}`)
+      addPokemonToCache(pokemon.data)
+      return pokemon.data
+    }
+    return pokemonCache[name]
+  }
+
+  return {
+    show
   }
 }
