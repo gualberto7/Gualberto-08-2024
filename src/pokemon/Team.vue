@@ -2,24 +2,39 @@
 import { usePokemonStore } from '@/stores/pokemon'
 import { usePokemon } from '@/pokemon/composables/usePokemon'
 import PokemonCard from '@/pokemon/components/pokemonCard.vue'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
-const { pokemonsTeam, pokemonCache } = usePokemonStore()
+const { pokemonsTeam, pokemonCache, removePokemonFromTeam } = usePokemonStore()
 const { show } = usePokemon()
+const loading = ref(true)
 
 onMounted(() => {
-  console.log('Pokemons team:', pokemonsTeam)
-  pokemonsTeam.forEach(async (name) => {
-    console.log('Name:', name)
+  loadData()
+})
+
+const loadData = async () => {
+  const promises = pokemonsTeam.map(async (name) => {
     await show(name)
   })
-})
+  await Promise.all(promises)
+  loading.value = false
+}
+
+const removePokemon = (name: string) => {
+  removePokemonFromTeam(name)
+}
 </script>
 
 <template>
-  <div class="container mx-auto my-5">
+  <div v-if="!loading" class="container mx-auto my-5">
     <div class="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 gap-10">
-      <PokemonCard v-for="pokemon in pokemonCache" :key="pokemon.url" :pokemon="pokemon" />
+      <PokemonCard
+        v-for="(pokemon, index) in pokemonsTeam"
+        :key="index"
+        :pokemon="pokemonCache[pokemon]"
+        is-team-member
+        @remove-pokemon="removePokemon"
+      />
     </div>
   </div>
 </template>

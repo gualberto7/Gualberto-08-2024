@@ -2,13 +2,19 @@
 import { usePokemon } from '../composables/usePokemon'
 import { usePokemonStore } from '@/stores/pokemon'
 import PokemonCard from './pokemonCard.vue'
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import { type Pokemon } from '../interfaces/Pokemon'
 import Button from '@/shared/components/Button.vue'
+import { useRouter } from 'vue-router'
 
-const pokemonsToAdd = reactive<String[]>([])
-usePokemon()
+const pokemonsToAdd = reactive<string[]>([])
+const { index } = usePokemon()
 const { pomkemonsList, addPokemonstToTeam } = usePokemonStore()
+const router = useRouter()
+
+onMounted(() => {
+  index()
+})
 
 const addPokemon = (pokemon: Pokemon, teamMember: boolean) => {
   if (teamMember) {
@@ -22,6 +28,7 @@ const addPokemon = (pokemon: Pokemon, teamMember: boolean) => {
 const addPokemons = () => {
   console.log('Pokemons to add:', pokemonsToAdd)
   addPokemonstToTeam(pokemonsToAdd)
+  router.push('/team')
 }
 </script>
 

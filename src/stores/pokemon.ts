@@ -8,13 +8,20 @@ export const usePokemonStore = defineStore('pokemon', () => {
   const cache = reactive<{ [key: string]: Pokemon }>({})
 
   const setPokemons = (_pokemons: Pokemon[]) => {
-    Object.assign(pokemons, _pokemons)
+    pokemons.splice(0, pokemons.length, ..._pokemons)
   }
 
-  const addPokemonstToTeam = (pokemon: String[]) => {
+  const addPokemonstToTeam = (pokemons: string[]) => {
     // using set to avoid duplicates
-    const newPokemons = new Set([...myPokemons, ...pokemon])
-    Object.assign(myPokemons, [...newPokemons])
+    const newPokemons = new Set([...myPokemons, ...pokemons])
+    myPokemons.splice(0, myPokemons.length, ...newPokemons)
+  }
+
+  const removePokemonFromTeam = (pokemon: string) => {
+    const index = myPokemons.findIndex((p) => p === pokemon)
+    if (index !== -1) {
+      myPokemons.splice(index, 1)
+    }
   }
 
   const addPokemonToCache = (pokemon: Pokemon) => {
@@ -32,6 +39,7 @@ export const usePokemonStore = defineStore('pokemon', () => {
     pokemonsTeam,
     addPokemonstToTeam,
     addPokemonToCache,
-    pokemonCache
+    pokemonCache,
+    removePokemonFromTeam
   }
 })
