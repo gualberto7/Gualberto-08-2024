@@ -34,7 +34,7 @@ const removePokemon = (name: string) => {
         v-for="(pokemon, index) in pokemonsTeam"
         :key="index"
         :pokemon="pokemonCache[pokemon]"
-        :img-size="200"
+        :img-size="300"
         is-team-member
         @remove-pokemon="removePokemon"
       />

@@ -39,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pokemon-card bg-white shadow-md rounded-lg p-4">
+  <div data-cy="pokemon-card" class="pokemon-card bg-white shadow-md rounded-lg p-4">
     <div class="w-full flex flex-col items-center">
       <img
         :src="`https://img.pokemondb.net/artwork/${pokemon.name}.jpg`"
@@ -57,6 +57,7 @@ onMounted(() => {
           type="checkbox"
           v-model="teamMember"
           @change="addPokemon(pokemon)"
+          :data-cy="`checkbox-${pokemon.name}`"
         />
         <svg
           v-else
@@ -67,6 +68,7 @@ onMounted(() => {
           fill="currentColor"
           class="trash-icon"
           @click="removePokemon(pokemon)"
+          data-cy="remove-from-team-icon"
         >
           <path d="M3 6h18v2H3V6zm2 3h14v13H5V9zm3-6h8v2H8V3z" />
         </svg>

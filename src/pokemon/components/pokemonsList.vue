@@ -59,6 +59,7 @@ onUnmounted(() => {
         @click="addPokemons"
         size="sm"
         :disabled="pokemonsToAdd.length < 1 || pokemonsToAdd.length > 6"
+        data-cy="add-to-team-button"
         >Agregar al equipo</Button
       >
     </div>
