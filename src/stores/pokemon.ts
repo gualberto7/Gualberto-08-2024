@@ -8,7 +8,7 @@ export const usePokemonStore = defineStore('pokemon', () => {
   const cache = reactive<{ [key: string]: Pokemon }>({})
 
   const setPokemons = (_pokemons: Pokemon[]) => {
-    pokemons.splice(0, pokemons.length, ..._pokemons)
+    pokemons.push(..._pokemons)
   }
 
   const addPokemonstToTeam = (pokemons: string[]) => {

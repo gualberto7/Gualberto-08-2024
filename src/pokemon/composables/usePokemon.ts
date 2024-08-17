@@ -1,11 +1,14 @@
 import api from '@/api/pokeApi'
 import { usePokemonStore } from '@/stores/pokemon'
+import { ref } from 'vue'
 
-export const usePokemon = () => {
-  const { setPokemons, addPokemonToCache, pokemonsTeam, pokemonCache } = usePokemonStore()
+export const usePokemon = (paginate: number = 151) => {
+  const { setPokemons, addPokemonToCache, pokemonCache } = usePokemonStore()
+  const pageQuery = ref<string>(`?limit=${paginate}`)
 
   const index = async () => {
-    const pokemons = await api.get('pokemon?limit=10')
+    const pokemons = await api.get(`pokemon${pageQuery.value}`)
+    pageQuery.value = '?' + pokemons.data.next.split('?')[1]
     setPokemons(pokemons.data.results)
   }
 

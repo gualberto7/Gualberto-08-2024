@@ -2,7 +2,7 @@
 import { usePokemon } from '../composables/usePokemon'
 import { usePokemonStore } from '@/stores/pokemon'
 import PokemonCard from './pokemonCard.vue'
-import { onMounted, reactive } from 'vue'
+import { onMounted, onUnmounted, reactive, ref } from 'vue'
 import { type Pokemon } from '../interfaces/Pokemon'
 import Button from '@/shared/components/Button.vue'
 import { useRouter } from 'vue-router'
@@ -11,10 +11,21 @@ const pokemonsToAdd = reactive<string[]>([])
 const { index } = usePokemon()
 const { pomkemonsList, addPokemonstToTeam } = usePokemonStore()
 const router = useRouter()
+const isLoading = ref(true)
 
-onMounted(() => {
-  index()
+onMounted(async () => {
+  await index()
+  isLoading.value = false
+  window.addEventListener('scroll', handleScroll)
 })
+
+const handleScroll = async () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && !isLoading.value) {
+    isLoading.value = true
+    await index()
+    isLoading.value = false
+  }
+}
 
 const addPokemon = (pokemon: Pokemon, teamMember: boolean) => {
   if (teamMember) {
@@ -30,6 +41,10 @@ const addPokemons = () => {
   addPokemonstToTeam(pokemonsToAdd)
   router.push('/team')
 }
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
