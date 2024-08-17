@@ -1,6 +1,8 @@
 # poke-app
 
-[DEMO Video](https://drive.google.com/file/d/1CCb76R59CWOsJ3glvVrZhbnVUlJXTI-9/view?usp=sharing)
+[DEMO App](https://drive.google.com/file/d/1CCb76R59CWOsJ3glvVrZhbnVUlJXTI-9/view?usp=sharing)
+
+[Demo cypress test](https://drive.google.com/file/d/1ZqqMI3ZWaArEqGAfSGBwLvCd2wcvyFxd/view?usp=sharing)
 
 ## Screenshots
 
