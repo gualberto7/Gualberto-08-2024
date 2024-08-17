@@ -11,6 +11,10 @@ defineProps({
   isTeamMember: {
     type: Boolean,
     default: false
+  },
+  imgSize: {
+    type: Number,
+    default: 130
   }
 })
 
@@ -28,7 +32,13 @@ const removePokemon = (pokemon: Pokemon) => {
 
 <template>
   <div class="pokemon-card bg-white shadow-md rounded-lg p-4">
-    <img :src="`https://img.pokemondb.net/artwork/${pokemon.name}.jpg`" :alt="pokemon.name" />
+    <div class="w-full flex flex-col items-center">
+      <img
+        :src="`https://img.pokemondb.net/artwork/${pokemon.name}.jpg`"
+        :alt="pokemon.name"
+        :width="imgSize"
+      />
+    </div>
 
     <div class="border-t">
       <div class="flex justify-between mb-3">

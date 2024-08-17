@@ -13,7 +13,8 @@ const props = defineProps({
 
 const pokemon = ref<Pokemon>({
   name: '',
-  url: ''
+  url: '',
+  id: 0
 })
 const pokemonEvolutionChain = ref<string[]>([])
 
@@ -21,11 +22,12 @@ const { show, getEvolutionChain } = usePokemon()
 
 onMounted(async () => {
   pokemon.value = await show(props.name)
+  console.log(pokemon.value)
   getEvolution()
 })
 
 const getEvolution = async () => {
-  const evolutionChain = await getEvolutionChain(2)
+  const evolutionChain = await getEvolutionChain(pokemon.value.id)
   let current = evolutionChain.chain
   while (current) {
     pokemonEvolutionChain.value.push(current.species.name)

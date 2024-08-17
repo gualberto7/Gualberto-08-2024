@@ -43,7 +43,7 @@ const addPokemons = () => {
       >
     </div>
     <div class="my-5 border"></div>
-    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-10">
+    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-7 gap-10">
       <PokemonCard
         v-for="pokemon in pomkemonsList"
         :key="pokemon.url"
