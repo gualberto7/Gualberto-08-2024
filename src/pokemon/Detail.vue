@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { usePokemon } from '@/pokemon/composables/usePokemon'
-import AudioPlayer from '@/shared/components/AudioPlayer.vue'
 import { onMounted, ref } from 'vue'
+
+import { usePokemon } from '@/pokemon/composables/usePokemon'
 import type { Pokemon } from './interfaces/Pokemon'
+import AudioPlayer from '@/shared/components/AudioPlayer.vue'
 
 const props = defineProps({
   name: {

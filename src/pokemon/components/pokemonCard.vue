@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import { type Pokemon } from '@/pokemon/interfaces/Pokemon'
 import AudioPlayer from '@/shared/components/AudioPlayer.vue'
-import { ref } from 'vue'
 
 defineProps({
   pokemon: {

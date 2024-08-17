@@ -1,8 +1,8 @@
+import { ref } from 'vue'
 import api from '@/api/pokeApi'
 import { usePokemonStore } from '@/stores/pokemon'
-import { ref } from 'vue'
 
-export const usePokemon = (paginate: number = 151) => {
+export const usePokemon = (paginate: number = 25) => {
   const { setPokemons, addPokemonToCache, pokemonCache } = usePokemonStore()
   const pageQuery = ref<string>(`?limit=${paginate}`)
 

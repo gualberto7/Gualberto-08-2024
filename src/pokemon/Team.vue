@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import { onMounted, ref } from 'vue'
+
 import { usePokemonStore } from '@/stores/pokemon'
 import { usePokemon } from '@/pokemon/composables/usePokemon'
 import PokemonCard from '@/pokemon/components/pokemonCard.vue'
-import { onMounted, ref } from 'vue'
 
 const { pokemonsTeam, pokemonCache, removePokemonFromTeam } = usePokemonStore()
 const { show } = usePokemon()

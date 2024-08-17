@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import { onMounted, onUnmounted, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 import { usePokemon } from '../composables/usePokemon'
 import { usePokemonStore } from '@/stores/pokemon'
-import PokemonCard from './pokemonCard.vue'
-import { onMounted, onUnmounted, reactive, ref } from 'vue'
 import { type Pokemon } from '../interfaces/Pokemon'
+import PokemonCard from './pokemonCard.vue'
 import Button from '@/shared/components/Button.vue'
-import { useRouter } from 'vue-router'
 
 const pokemonsToAdd = reactive<string[]>([])
 const { index } = usePokemon()
