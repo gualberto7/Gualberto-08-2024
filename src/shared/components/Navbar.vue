@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Avatar from '@/shared/components/Avatar.vue'
+import { HOME_ROUTE_NAME, TEAM_ROUTE_NAME } from '@/shared/constants/routes'
 </script>
 
 <template>
@@ -8,8 +9,8 @@ import Avatar from '@/shared/components/Avatar.vue'
       <router-link to="/" class="text-white font-bold text-lg">Poke App</router-link>
       <div>
         <ul class="flex text-white gap-3">
-          <li><RouterLink to="/">Home</RouterLink></li>
-          <li><RouterLink to="/team">Team</RouterLink></li>
+          <li><RouterLink :to="{ name: HOME_ROUTE_NAME }">Home</RouterLink></li>
+          <li><RouterLink :to="{ name: TEAM_ROUTE_NAME }">Team</RouterLink></li>
         </ul>
       </div>
       <div class="w-8">

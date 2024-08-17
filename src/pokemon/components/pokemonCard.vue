@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 import { type Pokemon } from '@/pokemon/interfaces/Pokemon'
 import AudioPlayer from '@/shared/components/AudioPlayer.vue'
+import { POKEMON_DETAIL_NAME } from '@/shared/constants/routes'
 
 defineProps({
   pokemon: {
@@ -89,7 +90,7 @@ const removePokemon = (pokemon: Pokemon) => {
         <AudioPlayer :url="pokemon.cries.latest" label="Play" />
       </div>
 
-      <RouterLink :to="{ name: 'pokemon-detail', params: { name: pokemon.name } }">
+      <RouterLink :to="{ name: POKEMON_DETAIL_NAME, params: { name: pokemon.name } }">
         Mas detalles
       </RouterLink>
     </div>
