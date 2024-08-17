@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 import { type Pokemon } from '@/pokemon/interfaces/Pokemon'
 import AudioPlayer from '@/shared/components/AudioPlayer.vue'
 import { POKEMON_DETAIL_NAME } from '@/shared/constants/routes'
+import { usePokemonStore } from '@/stores/pokemon'
 
-defineProps({
+const props = defineProps({
   pokemon: {
     type: Object as () => Pokemon,
     required: true
@@ -21,6 +22,7 @@ defineProps({
 })
 
 const emit = defineEmits(['addPokemon', 'removePokemon'])
+const { pokemonsTeam } = usePokemonStore()
 const teamMember = ref(false)
 
 const addPokemon = (pokemon: Pokemon) => {
@@ -30,6 +32,10 @@ const addPokemon = (pokemon: Pokemon) => {
 const removePokemon = (pokemon: Pokemon) => {
   emit('removePokemon', pokemon.name)
 }
+
+onMounted(() => {
+  teamMember.value = pokemonsTeam.includes(props.pokemon.name)
+})
 </script>
 
 <template>

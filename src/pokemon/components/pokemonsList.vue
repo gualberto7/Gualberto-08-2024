@@ -55,7 +55,10 @@ onUnmounted(() => {
       <span
         >Total pokemones seleccionamos: <strong>{{ pokemonsToAdd.length }}</strong></span
       >
-      <Button @click="addPokemons" size="sm" :disabled="pokemonsToAdd.length < 1"
+      <Button
+        @click="addPokemons"
+        size="sm"
+        :disabled="pokemonsToAdd.length < 1 || pokemonsToAdd.length > 6"
         >Agregar al equipo</Button
       >
     </div>
