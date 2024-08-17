@@ -2,6 +2,13 @@
 
 ## Screenshots
 
+![1](https://github.com/user-attachments/assets/13bfcaf7-d9bb-4f8e-a561-a83947a1b20f)
+
+![2](https://github.com/user-attachments/assets/32ffa6f4-7541-47bb-b36a-0c0858892aad)
+
+![3](https://github.com/user-attachments/assets/296abfc7-e293-4508-a9e6-34729f3d6d88)
+
+
 ## Used packages
 
 - axios 1.7
